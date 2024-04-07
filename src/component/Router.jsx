@@ -4,7 +4,7 @@ import { match } from 'path-to-regexp'
 export function Router({ routes = [], defaul: DefaultScreen = () => null }) {
   const { path } = useLink()
 
-  const routeparametro = {}
+  let routeparametro = {}
 
   const Scrn = routes.find(value => {
     if (value.path == path) return true
@@ -18,5 +18,5 @@ export function Router({ routes = [], defaul: DefaultScreen = () => null }) {
     return true
   })?.Component
 
-  return Scrn ? <Scrn /> : <DefaultScreen />
+  return Scrn ? <Scrn routeparametro={routeparametro} /> : <DefaultScreen />
 }
