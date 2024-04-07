@@ -1,16 +1,26 @@
-import { Link } from './Link'
-import { useLink } from '../customHook/useLink'
 import { About } from './about'
 import { Header } from './header'
+import { Router } from './Router'
+import { Link } from './Link'
 
 export function App() {
-  const { path } = useLink()
   return (
     <>
-      {path == '/' && <Header />}
-      <Link to='/about'>Ve aca</Link>
-      {path == '/about' && <About />}
-      <Link to='/'>Regresa</Link>
+      <Router
+        routes={[
+          {
+            path: '/',
+            Component: Header,
+          },
+          {
+            path: '/about',
+            Component: About,
+          },
+        ]}
+      />
+      <Link to='/about'>Ir al About</Link>
+      <br />
+      <Link to='/'>Volver</Link>
     </>
   )
 }
