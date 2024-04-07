@@ -1,4 +1,5 @@
 import { useLink } from '../customHook/useLink'
+
 export function Router({ routes = [], defaul: DefaultScreen = () => null }) {
   const { path } = useLink()
 

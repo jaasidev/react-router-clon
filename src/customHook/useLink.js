@@ -2,8 +2,6 @@ import { useState, useEffect } from 'react'
 
 export function useLink() {
   const [path, setPath] = useState(window.location.pathname)
-
-  console.log(path)
   useEffect(() => {
     const locationpath = () => {
       setPath(window.location.pathname)
