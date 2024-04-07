@@ -9,8 +9,14 @@ export function Link({ to, children, target, ...props }) {
   const { setPath } = useLink()
 
   const handleClick = event => {
-    event.preventDefault()
-    navigate(to)
+    const isMain = event.button == 0
+    const isManegable = target == undefined || target == '_self'
+    const isModified = event.metaKey || event.altKey || event.ctrlKey
+
+    if (isManegable && isMain && !isModified) {
+      event.preventDefault()
+      navigate(to)
+    }
   }
 
   return (
